@@ -1,0 +1,22 @@
+ID: Travel
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: hcdb
+   type: hdb
+   path: hcdb
+   requires:
+    - name: hdi_hcdb
+
+resources:
+ - name: hdi_hcdb
+   parameters:
+     config:
+       schema: hdi_hcdb
+       database_id: 759ed8d7-b05d-494e-a10f-272f319ef5da
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+   
+   
