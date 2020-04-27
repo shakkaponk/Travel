@@ -1,0 +1,8 @@
+graph workspace "FLIGHTS"
+edge table      "ROUTES"
+ source column  "AIRPORTCODEORIGIN"
+  target column "AIRPORTCODEDESTINATION"
+  key column    "ROUTEID"
+vertex table    "AIRPORTS"
+  key column    "AIRPORTCODE"
+

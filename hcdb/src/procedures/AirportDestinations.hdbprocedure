@@ -1,0 +1,18 @@
+PROCEDURE "AIRPORTDESTINATIONS" (IN AIRPORTCODE NVARCHAR(3), OUT DIRECT Int, OUT ONETRANSFER Int, OUT TWOTRANSFERS Int)
+   LANGUAGE GRAPH
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+	Graph g = Graph("FLIGHTS");
+	TRAVERSE BFS :g 
+		FROM {Vertex(:g, :AIRPORTCODE)} 
+	    ON VISIT VERTEX (Vertex v, BigInt lvl) {
+	    	IF (:lvl == 1L) {DIRECT = :DIRECT + 1;}
+	    	ELSE {
+	    		IF (:lvl == 2L) {ONETRANSFER = :ONETRANSFER + 1;}
+	    		ELSE {IF (:lvl == 3L) {TWOTRANSFERS = :TWOTRANSFERS + 1;}}
+	    	}
+		}
+	;
+END
