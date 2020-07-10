@@ -14,11 +14,7 @@ resources:
    parameters:
      config:
        schema: hdi_hcdb
-<<<<<<< HEAD
-       database_id: f844424e-485b-4b24-8593-45196b26f1c7
-=======
        database_id: 759ed8d7-b05d-494e-a10f-272f319ef5da
->>>>>>> refs/heads/master
    properties:
       hdi-container-name: ${service-name}
    type: com.sap.xs.hdi-container
